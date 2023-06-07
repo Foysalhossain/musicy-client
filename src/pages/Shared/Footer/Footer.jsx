@@ -5,7 +5,7 @@ const Footer = () => {
         <footer>
             <div className="footer p-10 bg-neutral text-neutral-content">
                 <div>
-                    <img className='w-24 h-auto' src={logo} alt="" />
+                    <img className='w-24' src={logo} alt="" />
                     <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </div>
                 <div>
@@ -19,7 +19,7 @@ const Footer = () => {
             </div>
             <div className="footer-center p-4 bg-base-300 text-base-content">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © 2023 - All right reserved by MUSICY Industries Ltd</p>
                 </div>
             </div>
         </footer>
