@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png'
 
 const Navbar = () => {
 
     const menuOptoins = <>
-        <li><a>Item 1</a></li>
-        <li> <a>Item 2</a> </li>
-        <li><a>Item 3</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to=''>Instructors</Link></li>
+        <li><Link to=''>Classes</Link></li>
+        <li><Link to='login'>Login</Link></li>
     </>
 
     return (
