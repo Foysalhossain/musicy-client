@@ -1,10 +1,23 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import logImg from '../../../src/assets/login/1.png'
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext)
+    const { signIn } = useContext(AuthContext);
+    const [passwordType, setPasswordType] = useState("password");
+    const [passwordInput, setPasswordInput] = useState("");
+    const handlePasswordChange = (evnt) => {
+        setPasswordInput(evnt.target.value);
+    }
+    const togglePassword = () => {
+        if (passwordType === "password") {
+            setPasswordType("text")
+            return;
+        }
+        setPasswordType("password")
+    }
 
     const handleLogin = event => {
         event.preventDefault();
@@ -38,10 +51,11 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                            <input type={passwordType} name="password" placeholder="password" className="input input-bordered"
+                            />
+                            <span onClick={togglePassword} className='absolute top-[14.5rem] right-[3.5rem] z-auto cursor-pointer'>
+                                {passwordType === "password" ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                            </span>
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-primary" type="submit" value="Login" />
