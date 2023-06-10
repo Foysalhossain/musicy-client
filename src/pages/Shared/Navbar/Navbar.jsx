@@ -19,7 +19,7 @@ const Navbar = () => {
 
         {
             user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">Button</button>
+                <li onClick={handleLogOut}><Link to=''>Logout</Link></li>
             </> : <>
                 <li><Link to='login'>Login</Link></li>
             </>
@@ -42,7 +42,7 @@ const Navbar = () => {
                         <img className='w-28 ml-5' src={logo} alt="" />
                     </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex items-center">
                     <ul className="menu menu-horizontal px-1">
                         {menuOptoins}
                     </ul>
