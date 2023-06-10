@@ -1,11 +1,21 @@
 import { useForm } from "react-hook-form";
 import signupImg from "../../assets/signup/1.png"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser } = useContext(AuthContext)
+
     const onSubmit = data => {
         console.log(data)
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
     };
 
 
@@ -47,20 +57,12 @@ const SignUp = () => {
                             {errors.password?.type === 'maxLength' && <span className="text-red-600 mt-2">Password must be less then 20 characters</span>}
                             {errors.password?.type === 'pattern' && <span className="text-red-600 mt-2">Password must have one uppercase one, lower case, one number and one special characters</span>}
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Confirm Password</span>
-                            </label>
-                            <input type="password" {...register("confirmpassword", { required: true })} name="password" placeholder="confirm password" className="input input-bordered" />
-                            {errors.confirmpassword && <span className="text-red-600 mt-2">Confirm Password is required</span>}
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
+
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <input className="btn btn-primary" type="submit" value="Sign Up" />
                         </div>
                     </form>
+                    <p className='ml-10 mb-6'><small>Already have an account? <Link className="text-blue-600" to="/login">Please Login</Link></small></p>
                 </div>
             </div>
         </div>

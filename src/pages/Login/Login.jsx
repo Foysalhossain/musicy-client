@@ -3,6 +3,7 @@ import logImg from '../../../src/assets/login/1.png'
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -29,6 +30,15 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                Swal.fire({
+                    title: 'User Login Successful',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
             })
     }
 
@@ -61,7 +71,7 @@ const Login = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p className='ml-10 mb-6'><small>New Here? <Link to="/signup">Create an Account</Link></small></p>
+                    <p className='ml-10 mb-6'><small>New Here? <Link className="text-blue-600" to="/signup">Create an Account</Link></small></p>
                 </div>
             </div>
         </div>
