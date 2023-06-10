@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import logImg from '../../../src/assets/login/1.png'
 import { AuthContext } from '../../providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,12 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState("password");
     const [passwordInput, setPasswordInput] = useState("");
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
+
     const handlePasswordChange = (evnt) => {
         setPasswordInput(evnt.target.value);
     }
@@ -38,7 +44,8 @@ const Login = () => {
                     hideClass: {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
-                })
+                });
+                navigate(from, { replace: true });
             })
     }
 
