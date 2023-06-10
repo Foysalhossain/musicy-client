@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import avatarImg from '../../../assets/user/avatar.png'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -17,40 +18,39 @@ const Navbar = () => {
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/secret'>secret</Link></li>
-
-        {
-            user ? <>
-                <li onClick={handleLogOut}><Link to=''>Logout</Link></li>
-            </> : <>
-                <li><Link to='login'>Login</Link></li>
-            </>
-        }
     </>
 
     return (
         <>
             <div className="navbar fixed z-10 bg-opacity-40 max-w-screen-xl bg-black text-white">
+
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-52">
                             {menuOptoins}
                         </ul>
                     </div>
-                    <div>
-                        <img className='w-28 ml-5' src={logo} alt="" />
-                    </div>
+                    <img className='w-28 ml-5' src={logo} alt="" />
                 </div>
-                <div className="navbar-center hidden lg:flex items-center">
+                <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {menuOptoins}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end mr-20">
+                    {
+                        user ? <>
+                            <li onClick={handleLogOut}><Link to=''>Logout</Link></li>
+                        </> : <>
+                            <img referrerPolicy="no-referrer" title={user?.displayName} className=' rounded-full w-14 h-10' src={user && user.photoURL ? user.photoURL : avatarImg} alt="" />
+                            <li className='list-none'><Link to='login'>Login</Link></li>
+                        </>
+                    }
                 </div>
+
             </div>
         </>
     );
