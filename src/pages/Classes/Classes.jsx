@@ -23,6 +23,7 @@ const Classes = () => {
                                 <h2 className="card-title">Name: {data.name}</h2>
                                 <p>Instructor Name: {data.instructor}</p>
                                 <p>Available seats: {data.available_seats}</p>
+                                <p>Total Students: {data.students}</p>
                                 <p>Price: {data.price}</p>
                                 <button className="btn btn-active btn-primary">Select</button>
                             </div>

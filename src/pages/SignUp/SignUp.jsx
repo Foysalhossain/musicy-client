@@ -16,7 +16,12 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
-        console.log(data)
+        console.log(data);
+
+        if (data.password !== data.confirmPassword) {
+            return alert("Password should be same")
+        }
+
         createUser(data.email, data.password, data.photo)
             .then(result => {
                 const loggedUser = (result.user, result.photo);
@@ -91,6 +96,15 @@ const SignUp = () => {
                             {errors.password?.type === 'minLength' && <span className="text-red-600 mt-2">Password must be 6 characters</span>}
                             {errors.password?.type === 'maxLength' && <span className="text-red-600 mt-2">Password must be less then 20 characters</span>}
                             {errors.password?.type === 'pattern' && <span className="text-red-600 mt-2">Password must have one uppercase one, lower case, one number and one special characters</span>}
+                        </div>
+
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" {...register("confirmpassword", {
+                                required: true,
+                            })} placeholder="confirm password" className="input input-bordered w-full" />
                         </div>
 
                         <div className="form-control mt-6">
