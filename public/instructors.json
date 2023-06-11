@@ -1,0 +1,62 @@
+[
+    {
+        "image": "https://i.ibb.co/KjvGhdF/alekon-pictures-gq-X0r-PCmdi-U-unsplash.jpg",
+        "name": "John Smith",
+        "email": "john.smith@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/VjL0Stj/vidar-nordli-mathisen-IT5-0o-M0-YH0-unsplash.jpg",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/R9sXWmM/priscilla-du-preez-Lsfq-HXd-Avfk-unsplash.jpg",
+        "name": "Alex Johnson",
+        "email": "alex.johnson@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/CP1sYvX/pexels-yan-krukau-8519678.jpg",
+        "name": "Sarah Thompson",
+        "email": "sarah.thompson@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/6RsqCfQ/pexels-yan-krukau-8192094.jpg",
+        "name": "David Wilson",
+        "email": "david.wilson@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/C6yRYw7/pexels-pavel-danilyuk-7521299.jpg",
+        "name": "Emily Davis",
+        "email": "emily.davis@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/JdZbj1V/pexels-yan-krukau-8520452.jpg",
+        "name": "Michael Brown",
+        "email": "michael.brown@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/cLwvVwj/pexels-pavel-danilyuk-7521301.jpg",
+        "name": "Olivia Martin",
+        "email": "olivia.martin@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/2SWgJ27/pexels-yan-krukau-8519702.jpg",
+        "name": "Daniel Lee",
+        "email": "daniel.lee@example.com",
+        "role": "instructor"
+    },
+    {
+        "image": "https://i.ibb.co/Jzg3Nw8/pexels-tima-miroshnichenko-6671991.jpg",
+        "name": "Sophia Rodriguez",
+        "email": "sophia.rodriguez@example.com",
+        "role": "instructor"
+    }
+]

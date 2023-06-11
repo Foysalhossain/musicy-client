@@ -1,0 +1,72 @@
+[
+    {
+        "image": "https://images.unsplash.com/photo-1540593463874-59835505e99d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
+        "name": "Yoga for Beginners",
+        "instructor": "Sarah Thompson",
+        "available_seats": 10,
+        "price": 50.00
+    },
+    {
+        "image": "https://plus.unsplash.com/premium_photo-1664301857931-0db8043f94e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Introduction to Painting",
+        "instructor": "David Rodriguez",
+        "available_seats": 5,
+        "price": 30.00
+    },
+    {
+        "image": "https://plus.unsplash.com/premium_photo-1661629272751-b8e90194074f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Cardio Kickboxing",
+        "instructor": "Michelle Lee",
+        "available_seats": 15,
+        "price": 40.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1497405417022-3fefbce30a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Meditation Workshop",
+        "instructor": "Emily Davis",
+        "available_seats": 8,
+        "price": 60.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1484972759836-b93f9ef2b293?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Pilates Fusion",
+        "instructor": "Michael Anderson",
+        "available_seats": 12,
+        "price": 25.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1450648757538-632c22bfdb7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Hip-Hop Dance Class",
+        "instructor": "Jessica Ramirez",
+        "available_seats": 7,
+        "price": 70.00
+    },
+    {
+        "image": "https://plus.unsplash.com/premium_photo-1682089463394-1f103a3af50f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Photography Masterclass",
+        "instructor": "Daniel Wilson",
+        "available_seats": 20,
+        "price": 55.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1442819516624-aa7a9bd24b63?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1228&q=80",
+        "name": "Cooking Essentials",
+        "instructor": "Sophia Martinez",
+        "available_seats": 3,
+        "price": 45.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1529086261532-e7761dc62181?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "name": "Strength Training 101",
+        "instructor": "Matthew Thompson",
+        "available_seats": 9,
+        "price": 35.00
+    },
+    {
+        "image": "https://images.unsplash.com/photo-1474959783111-a0f551bdad25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "name": "Introduction to Coding",
+        "instructor": "Alexandra Johnson",
+        "available_seats": 6,
+        "price": 20.00
+    }
+]
