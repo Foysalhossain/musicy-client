@@ -4,20 +4,18 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, handleGoogle } = useContext(AuthContext);
     const [passwordType, setPasswordType] = useState("password");
-    const [passwordInput, setPasswordInput] = useState("");
+    const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
 
 
-    const handlePasswordChange = (evnt) => {
-        setPasswordInput(evnt.target.value);
-    }
     const togglePassword = () => {
         if (passwordType === "password") {
             setPasswordType("text")
@@ -49,6 +47,21 @@ const Login = () => {
             })
     }
 
+    const googleSignIn = () => {
+        console.log('click');
+        handleGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
+    }
+
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -79,6 +92,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='ml-10 mb-6'><small>New Here? <Link className="text-blue-600" to="/signup">Create an Account</Link></small></p>
+                    <div className='mt-5 text-center'>
+                        <button onClick={googleSignIn} className="btn btn-active btn-accent mb-3"> Login with Google</button>
+                    </div>
                 </div>
             </div>
         </div>

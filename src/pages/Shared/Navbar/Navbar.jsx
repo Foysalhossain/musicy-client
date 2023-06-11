@@ -43,10 +43,10 @@ const Navbar = () => {
                 <div className="navbar-end mr-20">
                     {
                         user ? <>
-                            <li onClick={handleLogOut}><Link to=''>Logout</Link></li>
+                            <img referrerPolicy="no-referrer" title={user?.displayName} className=' rounded-full w-12 h-12 mr-6' src={user && user.photoURL ? user.photoURL : avatarImg} alt="" />
+                            <button onClick={handleLogOut} className="btn">Sign out</button>
                         </> : <>
-                            <img referrerPolicy="no-referrer" title={user?.displayName} className=' rounded-full w-14 h-10' src={user && user.photoURL ? user.photoURL : avatarImg} alt="" />
-                            <li className='list-none'><Link to='login'>Login</Link></li>
+                            <Link className='btn ml-3' to='/login'>Login</Link>
                         </>
                     }
                 </div>

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 
 const SignUp = () => {
@@ -16,10 +17,11 @@ const SignUp = () => {
 
     const onSubmit = data => {
         console.log(data)
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.photo)
             .then(result => {
-                const loggedUser = result.user;
+                const loggedUser = (result.user, result.photo);
                 console.log(loggedUser);
+                updatedUser(result.user, result.photo)
                 Swal.fire({
                     title: 'User Sign Up Successful',
                     showClass: {
@@ -32,6 +34,7 @@ const SignUp = () => {
                 navigate(from, { replace: true });
             })
     };
+
 
     const updatedUser = (user, userName, photo) => {
         updateProfile(user, {
