@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
-import avatarImg from '../../../assets/user/avatar.png'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -44,7 +43,7 @@ const Navbar = () => {
                 <div className="navbar-end mr-20">
                     {
                         user ? <>
-                            <img referrerPolicy="no-referrer" title={user?.displayName} className=' rounded-full w-12 h-12 mr-6' src={user && user.photoURL ? user.photoURL : avatarImg} alt="" />
+                            <img referrerPolicy="no-referrer" title={user?.displayName} className=' rounded-full w-12 h-12 mr-6' src={user?.photoURL} alt="" />
                             <button onClick={handleLogOut} className="btn">Sign out</button>
                         </> : <>
                             <Link className='btn ml-3' to='/login'>Login</Link>

@@ -21,7 +21,7 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = (result.user, result.photo);
                 console.log(loggedUser);
-                updatedUser(result.user, result.photo)
+                updatedUser(result.user, data.name, data.photo)
                 Swal.fire({
                     title: 'User Sign Up Successful',
                     showClass: {
@@ -60,21 +60,21 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" {...register("name", { required: true })} name="name" placeholder="name" className="input input-bordered" />
+                            <input type="text" {...register("name", { required: true })} placeholder="name" className="input input-bordered" />
                             {errors.name && <span className="text-red-600 mt-2">Name is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" {...register("photo", { required: true })} name='photo' placeholder="photo url" className="input input-bordered" required />
+                            <input type="text" {...register("photo", { required: true })} placeholder="photo url" className="input input-bordered" required />
                             {errors.photo && <span className="text-red-600 mt-2">Photo is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                            <input type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                             {errors.email && <span className="text-red-600 mt-2">Email is required</span>}
                         </div>
                         <div className="form-control">
@@ -86,7 +86,7 @@ const SignUp = () => {
                                 minLength: 6,
                                 maxLength: 20,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6}/
-                            })} name="password" placeholder="password" className="input input-bordered" />
+                            })} placeholder="password" className="input input-bordered" />
                             {errors.password?.type === 'required' && <span className="text-red-600 mt-2">Password is required</span>}
                             {errors.password?.type === 'minLength' && <span className="text-red-600 mt-2">Password must be 6 characters</span>}
                             {errors.password?.type === 'maxLength' && <span className="text-red-600 mt-2">Password must be less then 20 characters</span>}
