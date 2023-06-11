@@ -12,7 +12,7 @@ const Slider = () => {
                 <div className="absolute h-full flex items-center  transform -translate-y-1/2 top-1/2 px-24 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                     <div className='text-white  space-y-2 lg:space-y-7'>
                         <h2 className='text-2xl lg:text-6xl font-bold'>Learn The Music <br /> From The Masters</h2>
-                        <p className='text-xl lg:text-2xl'>Get Up To 60% Off *Only</p>
+                        <p>Search for Online Classes Courses at HomeAndGardenIdeas. Attractive Results. <br /> Get More Results. Online Information. Popular Searches. Related Searches. Internet Information. </p>
                     </div>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -25,7 +25,7 @@ const Slider = () => {
                 <div className="absolute h-full flex items-center  transform -translate-y-1/2 top-1/2 px-24 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                     <div className='text-white space-y-2 lg:space-y-7'>
                         <h2 className='text-3xl lg:text-6xl font-bold'>Music helps children <br /> develop better human <br /> connections.</h2>
-                        <p className='text-xl lg:text-2xl'>Get Up To 30% Off *Only</p>
+                        <p>Shop thousands of high-quality on-demand online courses. 30-day satisfaction guarantee. <br /> Find the right instructor for you. Choose from many topics, skill levels, and languages</p>
 
                     </div>
                 </div>
@@ -39,7 +39,7 @@ const Slider = () => {
                 <div className="absolute h-full flex items-center  transform -translate-y-1/2 top-1/2 px-24 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                     <div className='text-white space-y-2 lg:space-y-7'>
                         <h2 className='text-3xl lg:text-6xl font-bold'>Music teaches rhythm,  <br /> harmony & patience.</h2>
-                        <p className='text-xl lg:text-2xl'>Get Up To 45% Off *Only</p>
+                        <p>Music festivals are awesome. The music, the people, the vendors. <br /> Who wouldn’t enjoy such an extravaganza of the senses. In winter however, they can present their own unique</p>
 
                     </div>
                 </div>
