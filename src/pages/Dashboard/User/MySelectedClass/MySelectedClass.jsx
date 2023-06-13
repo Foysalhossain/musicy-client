@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -16,25 +17,59 @@ const MySelectedClass = () => {
     }, [user, axiosSecure])
     console.log(datas);
     return (
-        <div className="grid grid-cols-3 gap-6 px-10">
-            {
-                datas?.map(data => {
-                    return (
-                        <div key={data._id} className="card w-96 bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={data.image} alt="" className="rounded-xl" />
-                            </figure>
-                            <div className="card-body ">
-                                <h2 className="card-title"> {data.name}</h2>
-                                <p>Instructor Name: {data.instructor}</p>
-                                <p>Available seats: {data.available_seats}</p>
-                                <p>Total Students: {data.students}</p>
-                                <p>Price: {data.price}</p>
-                            </div>
-                        </div>
-                    )
-                })
-            }
+        <div>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Instructor Name</th>
+                            <th>Price</th>
+                            <th>Pay</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            datas.map((data, index) =>
+                                <tr key={data._id}>
+                                    <th>
+                                        {index + 1}
+                                    </th>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={data.image} alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="font-bold">{data.name}</div>
+                                    </td>
+                                    <td>
+                                        <div>{data.name}</div>
+                                    </td>
+                                    <td>
+                                        <div>${data.price}</div>
+                                    </td>
+                                    <td>
+                                        <Link to={`/dashboard/payment/${data._id}`} ><button className="btn btn-active btn-primary">Pay</button></Link>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-active btn-error">Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

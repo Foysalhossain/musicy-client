@@ -10,6 +10,8 @@ import Classes from "../pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
 import MySelectedClass from "../pages/Dashboard/User/MySelectedClass/MySelectedClass";
 import MyEnrolmentClass from "../pages/Dashboard/User/MyEnrolmentClass/MyEnrolmentClass";
+import Payment from "../pages/Dashboard/User/MyPayment/Payment";
+import MypaymentHistory from "../pages/Dashboard/User/MyPaymentHistory/MyPaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -36,7 +38,7 @@ export const router = createBrowserRouter([
             {
                 path: 'signup',
                 element: <SignUp></SignUp>
-            },
+            }
         ]
     },
     {
@@ -50,6 +52,14 @@ export const router = createBrowserRouter([
             {
                 path: 'myEnrolmentClass',
                 element: <MyEnrolmentClass></MyEnrolmentClass>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
+            },
+            {
+                path: 'paymenthistory',
+                element: <MypaymentHistory></MypaymentHistory>
             }
         ]
     }

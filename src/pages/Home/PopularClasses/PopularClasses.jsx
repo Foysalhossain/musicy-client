@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 
-const Classes = () => {
+const PopularClasses = () => {
     const { user } = useContext(AuthContext);
     const [datas, setDatas] = useState();
     const [axiosSecure] = useAxiosSecure();
@@ -23,9 +23,7 @@ const Classes = () => {
         if (user) {
             const userSelectedClass = datas.find(data => data._id === id);
             console.log(userSelectedClass);
-            userSelectedClass.classId = userSelectedClass._id;
-            delete userSelectedClass._id;
-            const selectedClass = { ...userSelectedClass, email: user?.email, payment: 'false' }
+            const selectedClass = { ...userSelectedClass, email: user?.email }
             axiosSecure.post("/userclasses", selectedClass)
                 .then(data => {
                     console.log(data.data);
@@ -44,9 +42,9 @@ const Classes = () => {
     }
 
     return (
-        <div className="grid grid-cols-3 gap-6 pt-36 pb-36">
+        <div className="grid grid-cols-3 gap-20 pt-36 pb-10">
             {
-                datas?.map(data => {
+                datas?.slice(0, 6).map(data => {
                     return (
                         <div key={data._id} className="card w-96 bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">
@@ -68,4 +66,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
+export default PopularClasses;

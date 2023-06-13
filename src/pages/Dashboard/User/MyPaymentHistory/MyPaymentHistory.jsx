@@ -3,7 +3,7 @@ import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 
-const MyEnrolmentClasses = () => {
+const MypaymentHistory = () => {
     const { user } = useContext(AuthContext);
     const [datas, setDatas] = useState();
     const [axiosSecure] = useAxiosSecure();
@@ -43,4 +43,4 @@ const MyEnrolmentClasses = () => {
     );
 };
 
-export default MyEnrolmentClasses;
+export default MypaymentHistory;
