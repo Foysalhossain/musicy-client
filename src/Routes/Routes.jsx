@@ -10,7 +10,7 @@ import Secret from "../pages/Shared/Secret/Secret";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
-import CourseInstructor from "../pages/Dashboard/CourseInstructor/CourseInstructor";
+import MySelectedClass from "../pages/Dashboard/User/MySelectedClass/MySelectedClass";
 
 
 export const router = createBrowserRouter([
@@ -49,8 +49,8 @@ export const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,
         children: [
             {
-                path: '/dashboard/courseinstructor',
-                element: <CourseInstructor></CourseInstructor>
+                path: 'myClasses',
+                element: <MySelectedClass></MySelectedClass>
             }
         ]
     }

@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const Classes = () => {
     const { user } = useContext(AuthContext);
     const [datas, setDatas] = useState();
+    const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,9 +19,22 @@ const Classes = () => {
             })
     }, [])
 
-    const selectHandler = () => {
+    const selectHandler = (id) => {
         if (user) {
-            // DOne
+            const userSelectedClass = datas.find(data => data._id === id);
+            console.log(userSelectedClass);
+            const selectedClass = { ...userSelectedClass, email: user?.email }
+            axiosSecure.post("/userclasses", selectedClass)
+                .then(data => {
+                    console.log(data.data);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Class Added',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
         }
         else {
             navigate("/login");
@@ -40,7 +56,7 @@ const Classes = () => {
                                 <p>Available seats: {data.available_seats}</p>
                                 <p>Total Students: {data.students}</p>
                                 <p>Price: {data.price}</p>
-                                <button onClick={selectHandler} className="btn btn-active btn-primary">Select</button>
+                                <button onClick={() => selectHandler(data._id)} className="btn btn-active btn-primary">Select</button>
                             </div>
                         </div>
                     )
