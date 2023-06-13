@@ -3,7 +3,7 @@
 const CourseInstructor = () => {
     return (
         <div>
-            <h2>Course Instructor</h2>
+            <h2>Course Instructor Here</h2>
         </div>
     );
 };

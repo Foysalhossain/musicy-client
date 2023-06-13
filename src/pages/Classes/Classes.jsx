@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 
 const Classes = () => {
-    const [datas, setDatas] = useState()
+    const { user } = useContext(AuthContext);
+    const [datas, setDatas] = useState();
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch('http://localhost:5000/classes')
             .then(res => res.json())
@@ -10,6 +15,16 @@ const Classes = () => {
                 setDatas(data);
             })
     }, [])
+
+    const selectHandler = () => {
+        if (user) {
+            // DOne
+        }
+        else {
+            navigate("/login");
+        }
+    }
+
     return (
         <div className="grid grid-cols-3 gap-6 pt-36 pb-36">
             {
@@ -25,7 +40,7 @@ const Classes = () => {
                                 <p>Available seats: {data.available_seats}</p>
                                 <p>Total Students: {data.students}</p>
                                 <p>Price: {data.price}</p>
-                                <button className="btn btn-active btn-primary">Select</button>
+                                <button onClick={selectHandler} className="btn btn-active btn-primary">Select</button>
                             </div>
                         </div>
                     )
