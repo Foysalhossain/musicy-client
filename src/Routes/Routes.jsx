@@ -5,12 +5,11 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import PrivateRoute from "./PrivateRoute";
-import Secret from "../pages/Shared/Secret/Secret";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
 import MySelectedClass from "../pages/Dashboard/User/MySelectedClass/MySelectedClass";
+import MyEnrolmentClass from "../pages/Dashboard/User/MyEnrolmentClass/MyEnrolmentClass";
 
 
 export const router = createBrowserRouter([
@@ -38,10 +37,6 @@ export const router = createBrowserRouter([
                 path: 'signup',
                 element: <SignUp></SignUp>
             },
-            {
-                path: 'secret',
-                element: <PrivateRoute><Secret></Secret></PrivateRoute>
-            }
         ]
     },
     {
@@ -51,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: 'myClasses',
                 element: <MySelectedClass></MySelectedClass>
+            },
+            {
+                path: 'myEnrolmentClass',
+                element: <MyEnrolmentClass></MyEnrolmentClass>
             }
         ]
     }

@@ -1,4 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
+import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -12,9 +13,18 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-80 h-full bg-orange-400 ">
                     {/* Sidebar content here */}
-                    <li><Link to="/dashboard/myClasses">My Selected Class</Link></li>
+                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+                    <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                    <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>
+                    <li><NavLink to="/dashboard/myEnrolmentClass"><FaCheckCircle></FaCheckCircle> My Enrolled Class</NavLink></li>
+
+                    <div className="divider"></div>
+
+                    <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
+                    <li><NavLink to='/instructors'>Instructors</NavLink></li>
+                    <li><NavLink to='/classes'>Classes</NavLink></li>
                 </ul>
 
             </div>

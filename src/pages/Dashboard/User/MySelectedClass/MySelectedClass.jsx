@@ -16,7 +16,7 @@ const MySelectedClass = () => {
     }, [user, axiosSecure])
     console.log(datas);
     return (
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 gap-6 px-10">
             {
                 datas?.map(data => {
                     return (
