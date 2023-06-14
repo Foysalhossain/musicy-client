@@ -43,7 +43,8 @@ const PopularInstructor = () => {
 
     return (
         <div>
-            <h2 className="text-4xl text-center">Popular Instructor</h2>
+            <h2 className="text-4xl text-center mt-10 font-semibold">Popular Instructor</h2>
+            <p className="text-center mt-6">See Our Popular Instructor</p>
             <div className="grid grid-cols-3 gap-20 pt-10 pb-10">
                 {
                     datas?.slice(0, 6).map(data => {

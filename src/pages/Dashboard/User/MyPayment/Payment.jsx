@@ -29,7 +29,7 @@ const Payment = () => {
 
     return (
         <div className="w-full ml-10">
-            <h2 className="text-center">Payment Please</h2>
+            <h2 className="text-center mb-20 text-4xl">Payment Please</h2>
             <Elements stripe={stripePromise}>
                 <CheckoutForm price={existClass?.price} id={existClass?._id}> </CheckoutForm>
             </Elements>

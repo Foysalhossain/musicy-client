@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MySelectedClass = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -16,6 +17,35 @@ const MySelectedClass = () => {
             })
     }, [user, axiosSecure])
     console.log(datas);
+
+    const handleDelete = data => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/userclasses/${data._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -61,7 +91,7 @@ const MySelectedClass = () => {
                                         <Link to={`/dashboard/payment/${data._id}`} ><button className="btn btn-active btn-primary">Pay</button></Link>
                                     </td>
                                     <td>
-                                        <button className="btn btn-active btn-error">Delete</button>
+                                        <button onClick={() => handleDelete(data)} className="btn btn-active btn-error">Delete</button>
                                     </td>
                                 </tr>
                             )
