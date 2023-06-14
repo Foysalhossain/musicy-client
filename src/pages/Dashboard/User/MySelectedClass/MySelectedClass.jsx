@@ -3,22 +3,37 @@ import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const MySelectedClass = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { user } = useContext(AuthContext);
-    const [datas, setDatas] = useState([])
+    const { user, loading } = useContext(AuthContext);
+    const [datas, setDatas] = useState([]);
 
-    useEffect(() => {
-        axiosSecure.get(`/userclasses/${user?.email}`)
-            .then(data => {
-                // console.log(data.data);
-                setDatas(data.data)
-            })
-    }, [user, axiosSecure])
-    console.log(datas);
 
-    const handleDelete = data => {
+    const { data = [], refetch } = useQuery({
+        queryKey: ['userClasses'],
+        enabled: !loading,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/userclasses/${user.email}`)
+            console.log(res.data);
+            return res.data
+
+        }
+    })
+
+
+
+    // useEffect(() => {
+    //     axiosSecure.get(`/userclasses/${user?.email}`)
+    //         .then(data => {
+    //             // console.log(data.data);
+    //             setDatas(data.data)
+    //         })
+    // }, [user, axiosSecure])
+    // console.log(datas);
+
+    const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -29,25 +44,31 @@ const MySelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/userclasses/${data._id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
+                axiosSecure.delete(`deleteclass/${id}`)
                     .then(data => {
-                        if (data.deletedCount > 0) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                        }
+                        console.log(data.data);
+
                     })
+                // fetch(`http://localhost:5000/deleteclass/${id}`, {
+                //     method: 'DELETE'
+                // })
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         // if (data.deletedCount > 0) {
+                //         //     Swal.fire(
+                //         //         'Deleted!',
+                //         //         'Your file has been deleted.',
+                //         //         'success'
+                //         //     )
+                //         // }
+                //     })
             }
         })
     }
 
     return (
-        <div>
+        <div className="w-full">
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -64,7 +85,7 @@ const MySelectedClass = () => {
                     </thead>
                     <tbody>
                         {
-                            datas.map((data, index) =>
+                            data.map((data, index) =>
                                 <tr key={data._id}>
                                     <th>
                                         {index + 1}
@@ -91,7 +112,7 @@ const MySelectedClass = () => {
                                         <Link to={`/dashboard/payment/${data._id}`} ><button className="btn btn-active btn-primary">Pay</button></Link>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDelete(data)} className="btn btn-active btn-error">Delete</button>
+                                        <button onClick={() => handleDelete(data._id)} className="btn btn-active btn-error">Delete</button>
                                     </td>
                                 </tr>
                             )

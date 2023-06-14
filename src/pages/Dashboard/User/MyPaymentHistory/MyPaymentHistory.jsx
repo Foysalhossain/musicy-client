@@ -16,7 +16,7 @@ const MypaymentHistory = () => {
 
 
     return (
-        <div>
+        <div className="w-full">
             <h2 className="text-4xl text-center mb-10">Popular Instructor</h2>
             <div>
                 <div className="overflow-x-auto">

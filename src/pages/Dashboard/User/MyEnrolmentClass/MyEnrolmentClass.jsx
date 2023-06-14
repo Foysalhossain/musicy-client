@@ -17,7 +17,7 @@ const MyEnrolmentClasses = () => {
 
 
     return (
-        <div>
+        <div className="w-full">
             <h2 className="text-4xl text-center mb-8">Enrolled Classes</h2>
             <div>
                 <div className="overflow-x-auto">

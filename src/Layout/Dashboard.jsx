@@ -4,6 +4,8 @@ import logo from '../../src/assets/logo/logo.png'
 
 
 const Dashboard = () => {
+    // const isAdmin = true;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -18,6 +20,8 @@ const Dashboard = () => {
                     <div className="text-center flex  justify-center my-8">
                         <img className="w-40 text-center" src={logo} alt="" />
                     </div>
+
+
 
                     {/* Sidebar content here */}
                     <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
