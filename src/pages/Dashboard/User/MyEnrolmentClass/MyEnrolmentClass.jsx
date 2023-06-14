@@ -30,8 +30,6 @@ const MyEnrolmentClasses = () => {
                                 <th>Name</th>
                                 <th>Instructor Name</th>
                                 <th>Price</th>
-                                <th>Pay</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
