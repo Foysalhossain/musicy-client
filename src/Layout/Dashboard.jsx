@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle } from "react-icons/fa";
+import logo from '../../src/assets/logo/logo.png'
 
 
 const Dashboard = () => {
@@ -13,7 +14,11 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-orange-400 ">
+                <ul className="menu p-4 w-80 h-full bg-orange-300 ">
+                    <div className="text-center flex  justify-center my-8">
+                        <img className="w-40 text-center" src={logo} alt="" />
+                    </div>
+
                     {/* Sidebar content here */}
                     <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                     <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>
