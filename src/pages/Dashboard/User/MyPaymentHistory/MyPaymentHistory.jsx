@@ -17,7 +17,7 @@ const MypaymentHistory = () => {
 
     return (
         <div>
-            <h2 className="text-4xl text-center">Popular Instructor</h2>
+            <h2 className="text-4xl text-center mb-10">Popular Instructor</h2>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -26,11 +26,10 @@ const MypaymentHistory = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
-                                <th>Name</th>
+                                <th>Course Name</th>
                                 <th>Instructor Name</th>
-                                <th>Price</th>
-                                <th>Pay</th>
-                                <th>Delete</th>
+                                <th>Payment</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,10 +52,13 @@ const MypaymentHistory = () => {
                                             <div className="font-bold">{data.name}</div>
                                         </td>
                                         <td>
-                                            <div>{data.name}</div>
+                                            <div>{data.instructor}</div>
                                         </td>
                                         <td>
-                                            <div>${data.price}</div>
+                                            <div>{data.payment}</div>
+                                        </td>
+                                        <td>
+                                            <div>{data.date}</div>
                                         </td>
                                     </tr>
                                 )
