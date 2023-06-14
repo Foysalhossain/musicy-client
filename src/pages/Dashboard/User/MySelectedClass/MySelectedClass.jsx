@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
@@ -8,7 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 const MySelectedClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user, loading } = useContext(AuthContext);
-    const [datas, setDatas] = useState([]);
 
 
     const { data = [], refetch } = useQuery({
@@ -22,16 +21,6 @@ const MySelectedClass = () => {
         }
     })
 
-
-
-    // useEffect(() => {
-    //     axiosSecure.get(`/userclasses/${user?.email}`)
-    //         .then(data => {
-    //             // console.log(data.data);
-    //             setDatas(data.data)
-    //         })
-    // }, [user, axiosSecure])
-    // console.log(datas);
 
     const handleDelete = id => {
         Swal.fire({
@@ -49,20 +38,7 @@ const MySelectedClass = () => {
                         console.log(data.data);
 
                     })
-                // fetch(`http://localhost:5000/deleteclass/${id}`, {
-                //     method: 'DELETE'
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log(data);
-                //         // if (data.deletedCount > 0) {
-                //         //     Swal.fire(
-                //         //         'Deleted!',
-                //         //         'Your file has been deleted.',
-                //         //         'success'
-                //         //     )
-                //         // }
-                //     })
+
             }
         })
     }

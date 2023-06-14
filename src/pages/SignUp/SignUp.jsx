@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SignUp = () => {
@@ -12,7 +13,7 @@ const SignUp = () => {
     const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-
+    const [axiosSecure] = useAxiosSecure();
     const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
@@ -26,6 +27,15 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = (result.user, result.photo);
                 console.log(loggedUser);
+                axiosSecure.post('/users', {
+                    email: data.email,
+                    image: data.photo,
+                    name: data.name,
+                    role: 'student'
+                })
+                    .then(data => {
+                        console.log(data.data);
+                    })
                 updatedUser(result.user, data.name, data.photo)
                 Swal.fire({
                     title: 'User Sign Up Successful',

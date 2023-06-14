@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle } from "react-icons/fa";
+import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle, FaPlus, FaUsers } from "react-icons/fa";
 import logo from '../../src/assets/logo/logo.png'
 
 
 const Dashboard = () => {
-    // const isAdmin = true;
+    const isAdmin = true;
+    const instructor = false;
 
     return (
         <div className="drawer lg:drawer-open">
@@ -21,12 +22,20 @@ const Dashboard = () => {
                         <img className="w-40 text-center" src={logo} alt="" />
                     </div>
 
-
+                    {
+                        isAdmin ? <>
+                            <li><NavLink to="/dashboard/paymenthistory"><FaHome></FaHome> Admin Home</NavLink></li>
+                            <li><NavLink to="/dashboard/myClasses"><FaPlus></FaPlus> Add Items</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Managae Users</NavLink></li>
+                        </> : instructor ? <></> : <>
+                            <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>
+                            <li><NavLink to="/dashboard/myEnrolmentClass"><FaCheckCircle></FaCheckCircle> My Enrolled Class</NavLink></li>
+                        </>
+                    }
 
                     {/* Sidebar content here */}
-                    <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
-                    <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>
-                    <li><NavLink to="/dashboard/myEnrolmentClass"><FaCheckCircle></FaCheckCircle> My Enrolled Class</NavLink></li>
+
 
                     <div className="divider"></div>
 

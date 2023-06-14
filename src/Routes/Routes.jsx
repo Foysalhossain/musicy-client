@@ -13,6 +13,7 @@ import MyEnrolmentClass from "../pages/Dashboard/User/MyEnrolmentClass/MyEnrolme
 import Payment from "../pages/Dashboard/User/MyPayment/Payment";
 import MypaymentHistory from "../pages/Dashboard/User/MyPaymentHistory/MyPaymentHistory";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
             {
                 path: 'paymenthistory',
                 element: <MypaymentHistory></MypaymentHistory>
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }
