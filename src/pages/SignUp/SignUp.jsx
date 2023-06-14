@@ -19,7 +19,7 @@ const SignUp = () => {
     const onSubmit = data => {
         console.log(data);
 
-        if (data.password !== data.confirmPassword) {
+        if (data.password !== data.confirmpassword) {
             return alert("Password should be same")
         }
 

@@ -1,16 +1,43 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { AuthContext } from "../../../providers/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
-    const [users, setUsers] = useState();
-    const { loading } = useContext(AuthContext);
-    axiosSecure.get('/users')
-        .then(data => {
-            setUsers(data.data);
-        })
+    // const [users, setUsers] = useState();
+
+    // useEffect(() => {
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['userscollection'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/users')
+            return res.data
+        }
+    })
+
+    // .then(data => {
+    //     setUsers(data.data);
+    // })
+    // }, [])
+
+
+    const adminHandler = (id) => {
+        axiosSecure.patch(`/makeadmin/${id}`, { role: 'admin', updated: 'true' })
+            .then(data => {
+                console.log(data.data);
+                refetch()
+            })
+    }
+
+    const instructorHandler = (id) => {
+        axiosSecure.patch(`/makeinstructor/${id}`, { role: 'instructor', updated: 'true' })
+            .then(data => {
+                console.log(data.data);
+                refetch()
+            })
+    }
+
     return (
         <div>
             <table className="table">
@@ -53,12 +80,12 @@ const ManageUsers = () => {
                                 </td>
                                 <td>
                                     <div>
-                                        <button className="btn btn-success">Instructor</button>
+                                        <button onClick={() => instructorHandler(data._id)} className="btn btn-success">Instructor</button>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <button className="btn btn-warning">Admin</button>
+                                        <button onClick={() => adminHandler(data._id)} className="btn btn-warning">Admin</button>
                                     </div>
                                 </td>
                             </tr>
