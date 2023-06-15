@@ -3,11 +3,14 @@ import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle, FaUsers, FaChalkb
 import logo from '../../src/assets/logo/logo.png'
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 
 const Dashboard = () => {
     // const isAdmin = true;
     // const instructor = false;
+    const { user } = useContext(AuthContext);
     const [isInstructor] = useInstructor();
     console.log(isInstructor);
 
@@ -27,6 +30,12 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full bg-orange-300 ">
                     <div className="text-center flex  justify-center my-8">
                         <img className="w-40 text-center" src={logo} alt="" />
+                    </div>
+                    <div className="text-center w-full my-4">
+                        <div className="flex justify-center">
+                            <img className="rounded-[50%] h-24 w-24" src={user.photoURL} alt="" />
+                        </div>
+                        <h2 className="my-3">User Email: {user.email}</h2>
                     </div>
 
                     {
