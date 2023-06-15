@@ -1,12 +1,16 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle, FaUsers } from "react-icons/fa";
+import { FaChalkboardTeacher, FaWallet, FaHome, FaCheckCircle, FaUsers, FaChalkboard, FaRegClipboard, FaPlus } from "react-icons/fa";
 import logo from '../../src/assets/logo/logo.png'
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 
 const Dashboard = () => {
     // const isAdmin = true;
-    const instructor = false;
+    // const instructor = false;
+    const [isInstructor] = useInstructor();
+    console.log(isInstructor);
+
     const [isAdmin] = useAdmin();
     // console.log(isAdmin);
 
@@ -29,7 +33,10 @@ const Dashboard = () => {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/manageclasses"><FaHome></FaHome> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Managae Users</NavLink></li>
-                        </> : instructor ? <></> : <>
+                        </> : isInstructor ? <>
+                            <li><NavLink to="/dashboard/addclass"><FaPlus></FaPlus> Add Class</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> My Class</NavLink></li>
+                        </> : <>
                             <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>
                             <li><NavLink to="/dashboard/myEnrolmentClass"><FaCheckCircle></FaCheckCircle> My Enrolled Class</NavLink></li>
@@ -42,8 +49,8 @@ const Dashboard = () => {
                     <div className="divider"></div>
 
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
-                    <li><NavLink to='/instructors'>Instructors</NavLink></li>
-                    <li><NavLink to='/classes'>Classes</NavLink></li>
+                    <li><NavLink to='/instructors'><FaRegClipboard></FaRegClipboard> Instructors</NavLink></li>
+                    <li><NavLink to='/classes'><FaChalkboard></FaChalkboard> Classes</NavLink></li>
                 </ul>
 
             </div>
