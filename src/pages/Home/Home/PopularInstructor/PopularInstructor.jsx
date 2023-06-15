@@ -12,7 +12,7 @@ const PopularInstructor = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://musicy-server-gules.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 setDatas(data);

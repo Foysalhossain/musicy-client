@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Instructors = () => {
     const [datas, setDatas] = useState()
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://musicy-server-gules.vercel.app/instructors')
             .then(res => res.json())
             .then(data => {
                 setDatas(data);
