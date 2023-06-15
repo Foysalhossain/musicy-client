@@ -35,7 +35,7 @@ const Dashboard = () => {
                         <div className="flex justify-center">
                             <img className="rounded-[50%] h-24 w-24" src={user.photoURL} alt="" />
                         </div>
-                        <h2 className="my-3">User Email: {user.email}</h2>
+                        <h2 className="my-3 font-semibold">User Email: {user.email}</h2>
                     </div>
 
                     {
@@ -44,7 +44,7 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> Managae Users</NavLink></li>
                         </> : isInstructor ? <>
                             <li><NavLink to="/dashboard/addclass"><FaPlus></FaPlus> Add Class</NavLink></li>
-                            <li><NavLink to="/dashboard/manageusers"><FaUsers></FaUsers> My Class</NavLink></li>
+                            <li><NavLink to="/dashboard/myclass"><FaUsers></FaUsers> My Class</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                             <li><NavLink to="/dashboard/myClasses"><FaChalkboardTeacher></FaChalkboardTeacher>My Selected Class</NavLink></li>

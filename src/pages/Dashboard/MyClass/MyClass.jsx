@@ -1,44 +1,21 @@
+import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../../providers/AuthProvider";
 
-
-const ManageUsers = () => {
+const MyClass = () => {
+    const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    // const [users, setUsers] = useState();
+    const [data, setData] = useState();
 
-    // useEffect(() => {
-    const { data: users = [], refetch } = useQuery({
-        queryKey: ['userscollection'],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/users')
-            return res.data
-        }
-    })
-
-    // .then(data => {
-    //     setUsers(data.data);
-    // })
-    // }, [])
-
-
-    const adminHandler = (id) => {
-        axiosSecure.patch(`/makeadmin/${id}`, { role: 'admin', updated: 'true' })
+    useEffect(() => {
+        axiosSecure.get(`instructorclasses/${user?.email}`)
             .then(data => {
-                console.log(data.data);
-                refetch()
+                setData(data?.data);
             })
-    }
-
-    const instructorHandler = (id) => {
-        axiosSecure.patch(`/makeinstructor/${id}`, { role: 'instructor', updated: 'true' })
-            .then(data => {
-                console.log(data.data);
-                refetch()
-            })
-    }
+    }, [])
 
     return (
-        <div>
+        <div className="w-full">
             <table className="table">
                 {/* head */}
                 <thead>
@@ -46,15 +23,15 @@ const ManageUsers = () => {
                         <th>#</th>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Make Instructor</th>
-                        <th>Make Admin</th>
+                        <th>Instructor Name</th>
+                        <th>Feedback</th>
+                        <th>Status</th>
+                        <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        users?.map((data, index) =>
+                        data?.map((data, index) =>
                             <tr key={data._id}>
                                 <th>
                                     {index + 1}
@@ -72,20 +49,16 @@ const ManageUsers = () => {
                                     <div className="font-bold">{data.name}</div>
                                 </td>
                                 <td>
-                                    <div>{data.email}</div>
+                                    <div>{data.instructor}</div>
                                 </td>
                                 <td>
-                                    <div>{data.role}</div>
+                                    <div>{data.feedback}</div>
                                 </td>
                                 <td>
-                                    <div>
-                                        <button onClick={() => instructorHandler(data._id)} className="btn btn-success">Instructor</button>
-                                    </div>
+                                    <div>{data.status}</div>
                                 </td>
                                 <td>
-                                    <div>
-                                        <button onClick={() => adminHandler(data._id)} className="btn btn-warning">Admin</button>
-                                    </div>
+                                    <div>${data.price}</div>
                                 </td>
                             </tr>
                         )
@@ -97,4 +70,6 @@ const ManageUsers = () => {
     );
 };
 
-export default ManageUsers;
+export default MyClass;
+
+// instructorclasses/:email
