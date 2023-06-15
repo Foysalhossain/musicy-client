@@ -18,7 +18,7 @@ const Dashboard = () => {
     // console.log(isAdmin);
 
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/* Page content here */}
@@ -27,7 +27,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-orange-300 ">
+                <ul className="menu p-4 w-80 h-full bg-orange-300 text-black">
                     <div className="text-center flex  justify-center my-8">
                         <img className="w-40 text-center" src={logo} alt="" />
                     </div>
