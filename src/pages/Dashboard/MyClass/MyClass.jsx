@@ -8,7 +8,7 @@ const MyClass = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        axiosSecure.get(`instructorclasses/${user?.email}`)
+        axiosSecure.get(`/instructorclasses/${user?.email}`)
             .then(data => {
                 setData(data?.data);
             })
@@ -22,7 +22,7 @@ const MyClass = () => {
                     <tr>
                         <th>#</th>
                         <th>Image</th>
-                        <th>Name</th>
+                        <th>Class Name</th>
                         <th>Instructor Name</th>
                         <th>Feedback</th>
                         <th>Status</th>

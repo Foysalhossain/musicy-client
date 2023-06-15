@@ -45,7 +45,7 @@ const PopularClasses = () => {
         <div className="mt-16">
             <h2 className="text-4xl text-center font-semibold">Popular Class</h2>
             <p className="text-center mt-6">Here Our Popular Classes</p>
-            <div className="grid grid-cols-3 gap-20 mt-10 pb-10">
+            <div className="grid md:grid-cols-3 gap-20 mt-10 pb-10">
                 {
                     datas?.slice(0, 6).map(data => {
                         return (
